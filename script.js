@@ -6,5 +6,10 @@ const TOTAL_SQUARES = GRID_SIZE * GRID_SIZE;
 for (let i = 0; i < TOTAL_SQUARES; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
+
+    square.addEventListener("mouseenter", () => {
+        square.classList.add("colored");
+    });
+
     container.appendChild(square);
 }
