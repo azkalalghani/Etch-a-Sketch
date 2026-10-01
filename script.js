@@ -15,14 +15,19 @@ function createGrid(size) {
         square.style.width = `${squarePercentage}%`;
         square.style.height = `${squarePercentage}%`;
 
+        let darkness = 0;
+
         square.addEventListener("mouseenter", () => {
             // square.classList.add("colored");
+            if (darkness < 10) {
+                darkness++;
+            };
 
             const r = Math.floor(Math.random() * 256);
             const g = Math.floor(Math.random() * 256);
             const b = Math.floor(Math.random() * 256);
 
-            square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            square.style.backgroundColor = `rgb(${r}, ${g}, ${b}, ${darkness*0.2})`;
         });
 
         container.appendChild(square);
