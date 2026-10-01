@@ -16,7 +16,13 @@ function createGrid(size) {
         square.style.height = `${squarePercentage}%`;
 
         square.addEventListener("mouseenter", () => {
-            square.classList.add("colored");
+            // square.classList.add("colored");
+
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+
+            square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         });
 
         container.appendChild(square);
