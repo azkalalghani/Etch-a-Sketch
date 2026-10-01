@@ -1,15 +1,40 @@
 const container = document.querySelector('#container');
 
-const GRID_SIZE = 16;
-const TOTAL_SQUARES = GRID_SIZE * GRID_SIZE;
+const resetBtn = document.querySelector("#reset-btn");
 
-for (let i = 0; i < TOTAL_SQUARES; i++) {
-    const square = document.createElement("div");
-    square.classList.add("square");
+function createGrid(size) {
+    container.innerHTML = "";
 
-    square.addEventListener("mouseenter", () => {
-        square.classList.add("colored");
-    });
+    const totalSquares = size * size;
+    const squarePercentage = 100 / size;
 
-    container.appendChild(square);
+    for (let i = 0; i < totalSquares; i++) {
+        const square = document.createElement("div");
+        square.classList.add("square");
+        
+        square.style.width = `${squarePercentage}%`;
+        square.style.height = `${squarePercentage}%`;
+
+        square.addEventListener("mouseenter", () => {
+            square.classList.add("colored");
+        });
+
+        container.appendChild(square);
+    }
 }
+
+resetBtn.addEventListener("click", () => {
+    let userInput = prompt("Enter squares per side (1 - 100: ");
+
+    if (userInput === null) return;
+
+    let size = parseInt(userInput);
+
+    if (isNaN(size) || size < 1 || size > 100) {
+        alert("Please enter a valid number between 1 and 100!");
+    } else {
+        createGrid(size);
+    }
+});
+
+createGrid(16)
