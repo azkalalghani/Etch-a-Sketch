@@ -1,5 +1,4 @@
 const container = document.querySelector('#container');
-
 const resetBtn = document.querySelector("#reset-btn");
 
 function createGrid(size) {
